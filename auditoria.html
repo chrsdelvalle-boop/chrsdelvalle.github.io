@@ -1,0 +1,1317 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>EDUFLEX | Cuestionario Auditoría (Grupos 1–7)</title>
+  <style>
+    :root{
+      --bg:#f4f7fb; --card:#ffffff; --text:#1f2d3d; --muted:#6b7a90;
+      --accent:#2ecc71; --accent2:#1ea85a; --danger:#e74c3c; --warn:#f39c12;
+      --border:#e6ecf5; --blue:#2b6cb0;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text);}
+    .wrap{max-width:1180px;margin:0 auto;padding:18px;}
+    .header{
+      background:linear-gradient(135deg,#ffffff,#f7fffb);
+      border:1px solid var(--border);border-radius:14px;padding:18px;
+      box-shadow:0 8px 24px rgba(31,45,61,.06);
+      display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
+    }
+    .brand{display:flex;align-items:center;gap:10px;}
+    .logo{
+      width:42px;height:42px;border-radius:14px;background:var(--accent);
+      display:grid;place-items:center;color:white;font-weight:900;
+      box-shadow:0 10px 20px rgba(46,204,113,.22);
+    }
+    .title h1{font-size:18px;margin:0;}
+    .title p{margin:3px 0 0 0;color:var(--muted);font-size:13px;line-height:1.35;}
+    .pill{background:#ecfff4;color:#187e43;border:1px solid #c8f3da;padding:8px 10px;border-radius:999px;font-size:12px;white-space:nowrap;}
+
+    .card{
+      margin-top:14px;background:var(--card);border:1px solid var(--border);border-radius:14px;
+      padding:16px;box-shadow:0 8px 24px rgba(31,45,61,.06);
+    }
+
+    .tabs{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px;}
+    .tab{
+      padding:10px 12px;border-radius:999px;border:1px solid var(--border);
+      background:#fbfcff;color:#24406b;font-weight:900;cursor:pointer;
+      display:flex;align-items:center;gap:8px;
+    }
+    .tab.active{background:#ecfff4;border-color:#c8f3da;color:#187e43;}
+    .counter{font-size:12px;color:var(--muted);font-weight:800;}
+
+    .q{padding:14px 12px;border:1px solid var(--border);border-radius:12px;margin-bottom:12px;background:#fff;}
+    .q-head{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;flex-wrap:wrap;}
+    .q-title{margin:0 0 10px 0;font-weight:900;line-height:1.35;}
+    .q-tag{font-size:12px;color:var(--muted);border:1px solid var(--border);padding:6px 10px;border-radius:999px;background:#fbfcff;}
+
+    .opts label{
+      display:block;padding:10px 10px;border:1px solid var(--border);border-radius:10px;margin-bottom:8px;
+      cursor:pointer;transition:.12s ease-in-out;line-height:1.35;
+    }
+    .opts label:hover{border-color:#cfe7ff;box-shadow:0 4px 12px rgba(31,45,61,.05);}
+    .opts input{margin-right:10px;transform:translateY(1px);}
+
+    .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px;}
+    button{border:0;padding:12px 14px;border-radius:12px;cursor:pointer;font-weight:900;font-size:14px;}
+    .btn-primary{background:var(--accent);color:white;}
+    .btn-primary:hover{background:var(--accent2);}
+    .btn-outline{background:white;color:var(--blue);border:1px solid #cfe0ff;}
+    .btn-outline:hover{background:#f6f9ff;}
+    .btn-ghost{background:#eef3ff;color:#24406b;border:1px solid #dbe6ff;}
+    .btn-ghost:hover{filter:brightness(.98);}
+
+    .result{margin-top:12px;padding:14px 12px;border-radius:12px;border:1px dashed var(--border);background:#fbfcff;}
+    .score{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;}
+    .big{font-size:18px;font-weight:900;margin:0;}
+    .meta{margin:6px 0 0 0;color:var(--muted);font-size:13px;line-height:1.35;}
+    .badge{padding:8px 12px;border-radius:999px;font-weight:900;font-size:12px;border:1px solid;white-space:nowrap;}
+    .ok{background:#ecfff4;color:#187e43;border-color:#c8f3da;}
+    .bad{background:#fff1ef;color:#9e2a1f;border-color:#ffd0c9;}
+    .mid{background:#fff8e6;color:#8a5a00;border-color:#ffe4aa;}
+
+    .review{margin-top:12px;border-top:1px solid var(--border);padding-top:12px;}
+    .review h3{margin:0 0 8px 0;font-size:15px;}
+    .miss{padding:10px 10px;border:1px solid var(--border);border-radius:12px;margin-bottom:10px;background:white;}
+    .miss strong{color:var(--danger);}
+    .miss small{color:var(--muted);display:block;margin-top:6px;line-height:1.35;}
+
+    .footer-note{margin-top:14px;color:var(--muted);font-size:12px;text-align:center;}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="header">
+      <div class="brand">
+        <div class="logo">E</div>
+        <div class="title">
+          <h1>EDUFLEX | Cuestionario Auditoría (Grupos 1–7) 🌳</h1>
+          <p>NIA 300 • NIA 530 • NIA 330 • NIA 320 • NIA 315 • (Grupo 7) 🌳</p>
+        </div>
+      </div>
+      <div class="pill">Offline • Auto-calificación • Revisión de errores</div>
+    </div>
+
+    <div class="card">
+      <div class="tabs" id="tabs"></div>
+      <div id="quiz"></div>
+
+      <div class="actions">
+        <button type="button" class="btn-primary" onclick="gradeCurrent()">Calificar este grupo</button>
+        <button type="button" class="btn-outline" onclick="gradeGlobal()">Calificar TODO</button>
+        <button type="button" class="btn-ghost" onclick="resetAll()">Reiniciar</button>
+      </div>
+
+      <div id="out" class="result" style="display:none;"></div>
+      <div class="footer-note">🌳 EDUFLEX • Prototipo educativo</div>
+    </div>
+  </div>
+
+<script>
+/* =========================
+   DATA - TODO TEXTUAL (1–7)
+   ========================= */
+
+const G1 = [
+  {
+    id:"g1q1", tag:"Grupo 1 • NIA 300",
+    text:`1.- Ordene los pasos que describen las actividades preliminares y de planificación de la auditoría según la NIA 300:
+1.	Desarrollar el plan de auditoría con los procedimientos de valoración del riesgo y procedimientos posteriores.
+2.	Establecer la estrategia global de auditoría que guíe el desarrollo del plan de auditoría.
+3.	Realizar las actividades preliminares del encargo, incluyendo la evaluación de la ética e independencia.
+4.	Documentar la estrategia global de auditoría y el plan de auditoría en los papeles de trabajo.
+Opciones:`,
+    options:{
+      A:"3, 2, 1, 4",
+      B:"2, 3, 1, 4",
+      C:"3, 1, 2, 4",
+      D:"2, 1, 3, 4"
+    },
+    correct:"A"
+  },
+  {
+    id:"g1q2", tag:"Grupo 1 • NIA 300",
+    text:`2.- Ordene los pasos que representan el proceso de establecimiento de la estrategia global de auditoría conforme a la NIA 300:
+1.	Determinar la naturaleza, el momento de empleo y la extensión de los recursos necesarios para el encargo.
+2.	Identificar las características del encargo que definen su alcance.
+3.	Considerar los resultados de las actividades preliminares y el conocimiento obtenido en auditorías anteriores.
+4.	Establecer los objetivos del encargo en relación con los informes a emitir y las comunicaciones requeridas.
+Opciones:`,
+    options:{
+      A:"2, 4, 3, 1",
+      B:"3, 2, 4, 1",
+      C:"2, 3, 4, 1",
+      D:"4, 2, 3, 1"
+    },
+    correct:"A"
+  },
+  {
+    id:"g1q3", tag:"Grupo 1 • NIA 300",
+    text:`3.- De acuerdo con la NIA 300, el auditor debe __________ a los miembros clave del equipo del encargo en la __________ de la auditoría, con el fin de aprovechar su __________ y mejorar la __________ del proceso de planificación.
+Opciones:`,
+    options:{
+      A:"supervisar – ejecución – experiencia – eficiencia",
+      B:"incluir – planificación – conocimiento – eficacia",
+      C:"evaluar – revisión – criterio – independencia",
+      D:"dirigir – estrategia – juicio – documentación"
+    },
+    correct:"B"
+  },
+  {
+    id:"g1q4", tag:"Grupo 1 • NIA 300",
+    text:`4.- Conforme a la NIA 300, el auditor debe __________ las características del encargo que definen su __________, considerar los __________ del encargo en relación con los informes a emitir y determinar la __________ de los recursos necesarios para realizar la auditoría.
+Opciones:`,
+    options:{
+      A:"identificar – alcance – objetivos – naturaleza",
+      B:"evaluar – control – riesgos – cantidad",
+      C:"documentar – plan – resultados – dirección",
+      D:"analizar – proceso – factores – supervisión"
+    },
+    correct:"A"
+  },
+  {
+    id:"g1q5", tag:"Grupo 1 • NIA 300",
+    text:`5.- Relacione los conceptos principales de la NIA 300 con sus definiciones.
+1. Estrategia global de auditoría
+2. Plan de auditoría
+3. Actividades preliminares del encargo
+4. Documentación de auditoría.
+
+a. Registro de la estrategia global, el plan de auditoría y los cambios significativos realizados durante el encargo.
+b. Acciones iniciales que el auditor realiza al comienzo del encargo, relacionadas con la ética, independencia y aceptación del cliente.
+c. Definición del alcance, el momento de realización y la dirección de la auditoría.
+d. Descripción detallada de la naturaleza, el momento de realización y la extensión de los procedimientos de auditoría.
+
+Opciones:`,
+    options:{
+      A:"1c, 2d, 3b, 4a",
+      B:"1d, 2c, 3a, 4b",
+      C:"1b, 2d, 3c, 4a",
+      D:"1c, 2b, 3d, 4a"
+    },
+    correct:"A"
+  },
+  {
+    id:"g1q6", tag:"Grupo 1 • NIA 300",
+    text:`6.- Relacione los elementos del proceso de planificación de la auditoría según la NIA 300 con su descripción correcta.
+1. Estrategia global de auditoría
+2. Planificación de recursos
+3. Actualización de la planificación
+4. Participación del equipo del encargo
+
+a. Determinación de la naturaleza, el momento de empleo y la extensión de los recursos necesarios para realizar la auditoría.
+b. Intervención del socio del encargo y de los miembros clave para mejorar la eficacia y eficiencia de la planificación.
+c. Proceso mediante el cual el auditor define el alcance, el momento de realización y la dirección de la auditoría.
+d. Modificación de la estrategia global y del plan de auditoría cuando se producen cambios durante el encargo.
+
+
+Opciones:`,
+    options:{
+      A:"1c, 2a, 3d, 4b",
+      B:"1a, 2c, 3b, 4d",
+      C:"1c, 2b, 3a, 4d",
+      D:"1b, 2a, 3d, 4c"
+    },
+    correct:"A"
+  },
+  {
+    id:"g1q7", tag:"Grupo 1 • NIA 300",
+    text:`7.- En el contexto de la NIA 300, ¿cuál de los siguientes escenarios representa una aplicación incorrecta de la planificación de la auditoría?
+Opciones:`,
+    options:{
+      A:"El auditor establece una estrategia global de auditoría considerando el alcance, el momento de realización y la dirección del encargo.",
+      B:"El auditor desarrolla un plan de auditoría detallando la naturaleza, el momento de realización y la extensión de los procedimientos planificados.",
+      C:"El auditor ejecuta procedimientos de auditoría sin actualizar la estrategia global ni el plan de auditoría, a pesar de cambios significativos en las circunstancias del encargo.",
+      D:"El auditor documenta la estrategia global de auditoría y el plan de auditoría como parte de la documentación del encargo."
+    },
+    correct:"C"
+  },
+  {
+    id:"g1q8", tag:"Grupo 1 • NIA 300",
+    text:`8.- En el contexto de la NIA 300, ¿cuál de las siguientes situaciones evidencia una deficiente aplicación del proceso de planificación de la auditoría?
+Opciones:`,
+    options:{
+      A:"El auditor involucra al socio del encargo y a los miembros clave del equipo en la planificación de la auditoría.",
+      B:"El auditor define los objetivos del encargo y considera los factores significativos para la dirección del trabajo del equipo.",
+      C:"El auditor omite documentar la estrategia global y el plan de auditoría, a pesar de haberlos desarrollado previamente.",
+      D:"El auditor determina la naturaleza, el momento de empleo y la extensión de los recursos necesarios para el encargo."
+    },
+    correct:"C"
+  },
+  {
+    id:"g1q9", tag:"Grupo 1 • NIA 300",
+    text:`9.- Seleccione las responsabilidades del auditor relacionadas con la planificación de la auditoría de acuerdo con la NIA 300:
+1.	Preparar la información financiera de la entidad auditada.
+2.	Establecer una estrategia global de auditoría que determine el alcance, el momento y la dirección del encargo.
+3.	Evaluar y aprobar los estados financieros antes de su emisión.
+4.	Desarrollar un plan de auditoría que incluya la naturaleza, el momento de realización y la extensión de los procedimientos.
+5.	Actualizar la estrategia global y el plan de auditoría cuando sea necesario durante el encargo.
+Opciones:`,
+    options:{
+      A:"1, 2, 3",
+      B:"2, 3, 5",
+      C:"1, 3, 4",
+      D:"3, 4, 5"
+    },
+    correct:"C"
+  },
+  {
+    id:"g1q10", tag:"Grupo 1 • NIA 300",
+    text:`10.- Seleccione las actividades que forman parte del proceso de planificación de la auditoría según la NIA 300:
+1.	Identificar las características del encargo que definen su alcance.
+2.	Determinar los objetivos del encargo en relación con los informes a emitir.
+3.	Elaborar y firmar los estados financieros de la entidad.
+4.	Determinar la naturaleza, el momento de empleo y la extensión de los recursos necesarios para la auditoría.
+5.	Emitir la opinión del auditor sobre los estados financieros.
+Opciones:`,
+    options:{
+      A:"1, 2, 4",
+      B:"2, 3, 4",
+      C:"1, 3, 5",
+      D:"3, 4, 5"
+    },
+    correct:"A"
+  }
+];
+
+const G2 = [
+  { id:"g2q1", tag:"Grupo 2 • NIA 300",
+    text:`1.- Según la NIA 300, la organización del trabajo de auditoría en el tiempo implica:
+Opciones:`,
+    options:{
+      A:"Revisar únicamente los estados financieros al final del ejercicio.",
+      B:"Establecer un cronograma que defina cuándo se realizarán los procedimientos de auditoría.",
+      C:"Ejecutar todos los procedimientos después del cierre del ejercicio.",
+      D:"Aplicar los procedimientos sin considerar fechas clave."
+    },
+    correct:"B"
+  },
+  { id:"g2q2", tag:"Grupo 2 • NIA 300",
+    text:`2.- De acuerdo con la NIA 300, el trabajo preliminar se caracteriza por:
+Opciones:`,
+    options:{
+      A:"Realizarse después del cierre del ejercicio con estados financieros completos.",
+      B:"Ejecutarse solo cuando existen hallazgos importantes.",
+      C:"Realizarse antes del cierre del ejercicio contable.",
+      D:"Aplicarse únicamente en auditorías iniciales."
+    },
+    correct:"C"
+  },
+  { id:"g2q3", tag:"Grupo 2 • NIA 300",
+    text:`3.- De acuerdo con la NIA 300: Planificación de la Auditoría de Estados Financieros, El auditor debe planificar el trabajo de auditoría de manera que permita la __________ de los riesgos de incorrección material, la __________ asignación de los recursos de auditoría y la __________ de la naturaleza, oportunidad y extensión de los procedimientos de auditoría.
+Opciones:`,
+    options:{
+      A:"evaluación – correcta – ejecución",
+      B:"identificación – adecuada – determinación",
+      C:"medición – eficiente – aplicación",
+      D:"verificación – oportuna – supervisión"
+    },
+    correct:"B"
+  },
+  { id:"g2q4", tag:"Grupo 2 • NIA 300",
+    text:`4.- De acuerdo con la NIA 300 (párrafos 7 y 8), La estrategia general de auditoría se define considerando el __________ identificado, el __________ énfasis en procedimientos sustantivos y la __________ del control interno, especialmente en rubros de alta liquidez como Caja y Bancos.
+Opciones:`,
+    options:{
+      A:"riesgo – mayor – evaluación",
+      B:"error – menor – revisión",
+      C:"fraude – exclusivo – aplicación",
+      D:"entorno – limitado – supervisión"
+    },
+    correct:"A"
+  },
+  { id:"g2q5", tag:"Grupo 2 • NIA 300",
+    text:`5.- Según la NIA 300, ¿cuáles de las siguientes actividades forman parte de las actividades preliminares del encargo que deben realizarse al inicio del encargo actual? (selecciona todas las que apliquen)
+1.	Evaluación del cumplimiento de los requerimientos éticos, incluida la independencia
+2.	Establecimiento de la comprensión de los términos del encargo
+3.	Determinación de la materialidad global y de desempeño
+4.	Evaluación de si es apropiado continuar con el encargo (continuidad)
+5.	Identificación de riesgos inherentes y de control en todas las aserciones
+Opciones:`,
+    options:{
+      A:"1, 2, 3",
+      B:"1, 2, 4",
+      C:"2, 3, 5",
+      D:"1, 4, 5"
+    },
+    correct:"B"
+  },
+  { id:"g2q6", tag:"Grupo 2 • NIA 300",
+    text:`6.- Al establecer la estrategia global de auditoría según la NIA 300, el auditor debe considerar:
+1.	Características del encargo que definen su alcance
+2.	Objetivos de reporte del encargo para planificar timing y comunicaciones
+3.	Factores significativos para dirigir el esfuerzo del equipo
+4.	Resultados de las actividades preliminares del encargo
+5.	Naturaleza, oportunidad y extensión de los recursos necesarios
+6.	Cálculo detallado de materialidad por aserción
+7.	Diseño completo de procedimientos sustantivos
+Opciones:`,
+    options:{
+      A:"1, 2, 3, 4",
+      B:"1, 2, 3, 4, 5",
+      C:"2, 3, 5, 6, 7",
+      D:"1, 3, 5, 6, 7"
+    },
+    correct:"B"
+  },
+  { id:"g2q7", tag:"Grupo 2 • NIA 300",
+    text:`7.- Ordena cronológicamente las siguientes actividades que el auditor debe realizar según la NIA 300:
+1. Desarrollar el plan de auditoría detallado
+2. Realizar actividades preliminares del encargo (evaluación de independencia, aceptación/continuidad)
+3. Establecer la estrategia global de auditoría
+4. Involucrar a los miembros clave del equipo en la planificación y discusión de riesgos
+Opciones:`,
+    options:{
+      A:"2, 4, 3, 1",
+      B:"2, 3, 4, 1",
+      C:"4, 2, 3, 1",
+      D:"2, 4, 1, 3"
+    },
+    correct:"A"
+  },
+  { id:"g2q8", tag:"Grupo 2 • NIA 300",
+    text:`8.- Ordena los componentes principales que debe considerar el auditor al establecer la estrategia global de auditoría según el Anexo de la NIA 300:
+1. Características del encargo que definen su alcance
+2. Resultados de actividades preliminares del encargo
+3. Naturaleza, oportunidad y extensión de los procedimientos de auditoría
+4. Recursos necesarios para realizar la auditoría
+5. Objetivos de la auditoría y factores que afectan la dirección de la misma
+Opciones:`,
+    options:{
+      A:"2, 1, 5, 4, 3",
+      B:"2, 5, 1, 4, 3",
+      C:"1, 2, 5, 4, 3",
+      D:"2, 1, 4, 5, 3"
+    },
+    correct:"A"
+  },
+  { id:"g2q9", tag:"Grupo 2 • NIA 300",
+    text:`9.- Relacione los requerimientos según NIA 300
+1.	Participación de miembros clave del equipo del encargo	a.	La aplicación de los procedimientos requeridos por la NIA 220 relativos a la
+2.	Actividades preliminares del encargo	b.	Participaran en la planificación de la auditoria, incluida la planificación y la participación en la discusión entre los miembros del equipo de auditoria
+3.	Actividades de planificación	c.	Determinará la naturaleza, el momento de empleo y la extensión de los recursos necesarios para realizar el encargo de auditoria
+4.	Documentación	d.	La estrategia global de auditoria
+Opciones:`,
+    options:{
+      A:"1a, 2b, 3c, 4d",
+      B:"1b, 2a, 3c, 4d",
+      C:"1d, 2b, 3a, 4c",
+      D:"1c, 2d, 3a, 4b"
+    },
+    correct:"B"
+  },
+  { id:"g2q10", tag:"Grupo 2 • NIA 300",
+    text:`10.- Relaciones los conceptos claves según la NIA 300
+1.	Alcance	a.	Mas detallado que la estrategia global de auditoria
+2.	Función y momento de realización de la planificación	b.	Planificar la auditoria con el fin de que sea realizada de manera eficaz
+3.	Objetivo	c.	Facilita la dirección y supervisión de los miembros del equipo de trabajo y la revisión de su trabajo
+4.	Plan de auditoria	d.	La responsabilidad que tiene el auditor de planificar la auditoria de estados financieros
+Opciones:`,
+    options:{
+      A:"1a, 2b, 3c, 4d",
+      B:"1b, 2a, 3d, 4c",
+      C:"1c, 2d, 3a, 4b",
+      D:"1d, 2c, 3b, 4a"
+    },
+    correct:"D"
+  }
+];
+
+const G3 = [
+  { id:"g3q1", tag:"Grupo 3 • NIA 530",
+    text:`1.	Según la NIA 530, el objetivo del auditor al utilizar el muestreo de auditoría es proporcionar una __________ razonable que le permita alcanzar __________ apropiadas sobre la __________ completa de la que se selecciona la __________.
+Opciones:`,
+    options:{
+      A:"evidencia – opiniones – auditoría – muestra",
+      B:"base – conclusiones – población – muestra",
+      C:"opinión – juicios – empresa – auditoría",
+      D:"seguridad – resultados – muestra – población"
+    },
+    correct:"B"
+  },
+  { id:"g3q2", tag:"Grupo 3 • NIA 530",
+    text:`2.	Según la NIA 530, ordene correctamente las etapas que debe seguir el auditor en el proceso de muestreo de auditoría, desde la planificación hasta la evaluación final de los resultados:
+1.	Aplicar los procedimientos de auditoría adecuados a cada elemento seleccionado de la muestra.
+2.	Evaluar los resultados del muestreo y determinar si proporcionan una base razonable para concluir sobre la población.
+3.	Diseñar la muestra considerando el objetivo del procedimiento de auditoría y las características de la población.
+4.	Seleccionar los elementos de la muestra de forma que todas las unidades de muestreo tengan posibilidad de ser seleccionadas.
+Opciones:`,
+    options:{
+      A:"3, 4, 1, 2",
+      B:"4, 3, 1, 2",
+      C:"3, 1, 4, 2",
+      D:"1, 3, 4, 2"
+    },
+    correct:"A"
+  },
+  { id:"g3q3", tag:"Grupo 3 • NIA 530",
+    text:`3.	Relacione los requerimientos establecidos por la NIA 530 con su descripción correspondiente.
+1. Diseño de la muestra	a. Investigar la naturaleza y causa de las desviaciones o incorrecciones identificadas.
+2. Tamaño de la muestra	b. Considerar el objetivo del procedimiento y las características de la población.
+3. Naturaleza y causa de las desviaciones	c. Determinar un tamaño suficiente para reducir el riesgo de muestreo.
+4. Evaluación de los resultados	d. Evaluar si la muestra proporciona una base razonable para concluir.
+Opciones:`,
+    options:{
+      A:"1a, 2b, 3c, 4d",
+      B:"1b, 2c, 3a, 4d",
+      C:"1c, 2a, 3b, 4d",
+      D:"1b, 2a, 3d, 4c"
+    },
+    correct:"B"
+  },
+  { id:"g3q4", tag:"Grupo 3 • NIA 530",
+    text:`4.	Según la NIA 530 ¿Cuál de los siguientes enunciados describe correctamente el concepto de riesgo de muestreo?
+Opciones:`,
+    options:{
+      A:"Riesgo de que el auditor no aplique correctamente los procedimientos",
+      B:"Riesgo de que la evidencia obtenida no sea suficiente",
+      C:"Riesgo de que la conclusión basada en una muestra difiera de la que se obtendría al examinar toda la población",
+      D:"Riesgo de incumplimiento de las normas de auditoría"
+    },
+    correct:"C"
+  },
+  { id:"g3q5", tag:"Grupo 3 • NIA 530",
+    text:`5.	Según la NIA 530, ordene la secuencia lógica que debe seguir el auditor cuando identifica desviaciones o incorrecciones en una muestra durante la aplicación de los procedimientos de auditoría:
+1.	Extrapolar las incorrecciones encontradas en la muestra a la población para estimar su magnitud.
+2.	Investigar la naturaleza y la causa de las desviaciones o incorrecciones identificadas.
+3.	Aplicar procedimientos de auditoría adicionales cuando sea necesario para obtener evidencia suficiente y adecuada.
+4.	Evaluar los resultados del muestreo y determinar si la muestra proporciona una base razonable para alcanzar conclusiones sobre la población.
+Opciones:`,
+    options:{
+      A:"2, 1, 4, 3",
+      B:"2, 3, 1, 4",
+      C:"2, 1, 3, 4",
+      D:"3, 2, 1, 4"
+    },
+    correct:"C"
+  },
+  { id:"g3q6", tag:"Grupo 3 • NIA 530",
+    text:`6.	Según la NIA 530, el muestreo de auditoría consiste en la aplicación de procedimientos de auditoría a un __________ inferior al 100% de los elementos de una __________, de forma que todas las __________ de muestreo tengan __________ de ser seleccionadas.
+Opciones:`,
+    options:{
+      A:"valor – empresa – partidas – obligación",
+      B:"porcentaje – población – unidades – posibilidad",
+      C:"número – auditoría – cuentas – autorización",
+      D:"conjunto – entidad – transacciones – riesgo"
+    },
+    correct:"B"
+  },
+  { id:"g3q7", tag:"Grupo 3 • NIA 530",
+    text:`7.	Según la NIA 530, al diseñar una muestra de auditoría, el auditor debe considerar principalmente el __________ del procedimiento de auditoría y las __________ relevantes de la __________ de la cual se extraerá la muestra.
+Opciones:`,
+    options:{
+      A:"tamaño – condiciones – empresa",
+      B:"objetivo – características – población",
+      C:"riesgo – desviaciones – auditoría",
+      D:"alcance – limitaciones – entidad"
+    },
+    correct:"B"
+  },
+  { id:"g3q8", tag:"Grupo 3 • NIA 530",
+    text:`8.	Ordene correctamente, según la NIA 530, las etapas del proceso de muestreo de auditoría:
+1.	Aplicar los procedimientos de auditoría a los elementos seleccionados.
+2.	Diseñar la muestra considerando el objetivo del procedimiento.
+3.	Evaluar los resultados obtenidos del muestreo.
+4.	Seleccionar los elementos que formarán parte de la muestra.
+Opciones:`,
+    options:{
+      A:"2, 4, 1, 3",
+      B:"4, 2, 1, 3",
+      C:"2, 1, 4, 3",
+      D:"1, 2, 4, 3"
+    },
+    correct:"A"
+  },
+  { id:"g3q9", tag:"Grupo 3 • NIA 530",
+    text:`9.	Relacione los conceptos principales de la NIA 530 con sus definiciones.
+1. Muestreo de auditoría	a. Riesgo de que la conclusión del auditor basada en la muestra difiera de la población.
+2. Población	b. Importe establecido por el auditor para evaluar si las incorrecciones superan un nivel aceptable.
+3. Riesgo de muestreo	c. Aplicación de procedimientos de auditoría a un porcentaje inferior al 100% de los elementos.
+4. Incorrección tolerable	d. Conjunto completo de datos del que se selecciona la muestra.
+Opciones:`,
+    options:{
+      A:"1c, 2a, 3d, 4b",
+      B:"1a, 2d, 3c, 4b",
+      C:"1c, 2d, 3a, 4b",
+      D:"1d, 2c, 3b, 4a"
+    },
+    correct:"C"
+  },
+  { id:"g3q10", tag:"Grupo 3 • NIA 530",
+    text:`10.	Según la NIA 530, cuando el auditor no puede aplicar los procedimientos de auditoría diseñados, ni procedimientos alternativos adecuados, a un elemento seleccionado de la muestra, debe:
+Opciones:`,
+    options:{
+      A:"Excluir el elemento de la muestra sin documentarlo.",
+      B:"Considerar el elemento como una desviación en pruebas de controles o como una incorrección en pruebas de detalle.",
+      C:"Sustituirlo automáticamente por otro elemento sin analizar su efecto.",
+      D:"Cancelar el procedimiento de muestreo y emitir el informe inmediatamente."
+    },
+    correct:"B"
+  }
+];
+
+const G4 = [
+  { id:"g4q1", tag:"Grupo 4 • NIA 330",
+    text:`1. De acuerdo con la NIA 330 ¿cuál es el objetivo principal del auditor frente a los riesgos valorados?
+Opciones:`,
+    options:{
+      A:"Detectar fraudes cometidos por la administración.",
+      B:"Reducir el trabajo de auditoría en áreas de bajo riesgo.",
+      C:"Diseñar e implementar respuestas adecuadas a los riesgos de incorrección material.",
+      D:"Sustituir el juicio profesional por procedimientos estándar."
+    },
+    correct:"C"
+  },
+  { id:"g4q2", tag:"Grupo 4 • NIA 330",
+    text:`2. Complete la siguiente oración sobre los procedimientos de auditoría a los riesgos valorados de incorrección inmaterial según la NIA 330:
+El auditor debe diseñar y aplicar __________ de auditoría que respondan a los __________ valorados de incorrección material a nivel de __________ y de __________.
+Opciones:`,
+    options:{
+      A:"Generales – controles – entidad – transacciones",
+      B:"Procedimientos – riesgos – estados financieros – aseveraciones",
+      C:"Estrategias – errores – cuentas – saldos",
+      D:"Pruebas – fraudes – procesos – operaciones"
+    },
+    correct:"B"
+  },
+  { id:"g4q3", tag:"Grupo 4 • NIA 330",
+    text:`3. Seleccione las opciones correctas de acuerdo con la NIA 330 respecto a los procedimientos sustantivos:
+1.	Las pruebas de detalle.
+2.	Los procedimientos analíticos sustantivos.
+3.	La evaluación del control interno.
+4.	La obtención de evidencia suficiente y adecuada.
+5.	La eliminación total del riesgo de auditoría.
+Opciones:`,
+    options:{
+      A:"1, 2 y 4",
+      B:"1, 3 y 5",
+      C:"2, 3 y 4",
+      D:"3, 4 y 5"
+    },
+    correct:"A"
+  },
+  { id:"g4q4", tag:"Grupo 4 • NIA 330",
+    text:`4. ¿Cuál de las siguientes afirmaciones NO corresponde a los procedimientos sustantivos de la NIA 330?
+Opciones:`,
+    options:{
+      A:"El auditor debe realizar pruebas de controles cuando confía en la eficacia de los mismos.",
+      B:"Las pruebas sustantivas son obligatorias para cada clase significativa de transacciones.",
+      C:"El auditor puede omitir pruebas sustantivas si el riesgo es material.",
+      D:"Las respuestas del auditor deben vincularse con los riesgos valorados."
+    },
+    correct:"C"
+  },
+  { id:"g4q5", tag:"Grupo 4 • NIA 330",
+    text:`5. Relacione cada concepto con su definición según la NIA 330:
+1.	 Pruebas de controles	a.	Procedimientos diseñados para detectar incorrecciones materiales.
+2.	Procedimientos sustantivos	b.	Riesgo que requiere especial consideración por parte del auditor.
+3.	 Respuestas globales	c.	Acciones generales aplicadas a la auditoría en su conjunto.
+4.	Riesgo significativo	d.	Pruebas para evaluar la eficacia operativa de los controles internos
+Opciones:`,
+    options:{
+      A:"2a, 3b, 4c, 1d",
+      B:"1b, 2a, 3c, 4d",
+      C:"1c, 2b, 3a, 4d",
+      D:"1d, 2a, 3c, 4b"
+    },
+    correct:"D"
+  },
+  { id:"g4q6", tag:"Grupo 4 • NIA 330",
+    text:`6.  Complete el siguiente párrafo sobre la naturaleza y extensión de las pruebas de controles según la NIA 330:
+Para el diseño y _______________ de pruebas de ______________, el auditor realizará _____________ en combinación con otros procedimientos de auditoría, con el fin de obtener ____________ de auditoría sobre la eficiencia _____________ de los ___________.
+Opciones:`,
+    options:{
+      A:"Implementación – sustantivas – investigaciones – documentación – administrativa – controles",
+      B:"Aplicación – controles – indagaciones – evidencia – operativa – controles",
+      C:"Uso – análisis – búsquedas – respuestas – operacional – internos",
+      D:"Manejo – auditoria – exploración – riesgos – externa – auditores"
+    },
+    correct:"B"
+  },
+  { id:"g4q7", tag:"Grupo 4 • NIA 330",
+    text:`7. Seleccione la respuesta correcta
+Según la NIA 330, cuando el auditor identifica un riesgo significativo, deberá:
+Opciones:`,
+    options:{
+      A:"Reducir el alcance de las pruebas.",
+      B:"Aplicar únicamente procedimientos analíticos.",
+      C:"Diseñar procedimientos sustantivos específicos para ese riesgo.",
+      D:"Delegar el trabajo al personal junior."
+    },
+    correct:"C"
+  },
+  { id:"g4q8", tag:"Grupo 4 • NIA 330",
+    text:`8. Relacione cada afirmación con el concepto correspondiente según la NIA 330:
+1.	 Naturaleza de los procedimientos	a.	Momento en que se aplican los procedimientos para responder a los riesgos valorados.
+2.	Oportunidad de los procedimientos	b.	Cantidad de pruebas que el auditor decide aplicar.
+3.	Extensión de los procedimientos	c.	Tipo de procedimiento seleccionado para responder a los riesgos identificados.
+4.	Procedimientos de auditoría adicionales	d.	Procedimientos que se diseñan cuando la evidencia obtenida no es suficiente y adecuada.
+Opciones:`,
+    options:{
+      A:"1a, 2b, 3c,  4d",
+      B:"1b, 2c, 3d, 4a",
+      C:"3a, 2c, 1b, 4d",
+      D:"1c, 2a, 3d, 4b"
+    },
+    correct:"D"
+  },
+  { id:"g4q9", tag:"Grupo 4 • NIA 330",
+    text:`9. Ordene los siguientes pasos del proceso de respuesta del auditor según la NIA 330:
+1.	Aplicar pruebas de controles cuando sea necesario.
+2.	Evaluar la evidencia obtenida.
+3.	Identificar riesgos de incorrección material.
+4.	Ejecutar procedimientos sustantivos.
+5.	Diseñar respuestas globales a los riesgos.
+Opciones:`,
+    options:{
+      A:"3, 5, 1, 4, 2",
+      B:"2, 1, 3, 4, 5",
+      C:"1, 3, 2, 4, 5",
+      D:"1, 2, 3, 4, 5"
+    },
+    correct:"A"
+  },
+  { id:"g4q10", tag:"Grupo 4 • NIA 330",
+    text:`10. Seleccione la respuesta correcta sobre la evaluación de la suficiencia y adecuación de la evidencia de auditoría de acuerdo con la NIA 330:
+Si el auditor concluye que no ha podido obtener evidencia de auditoría suficiente y adecuada para sustentar su opinión sobre los estados financieros, deberá:
+Opciones:`,
+    options:{
+      A:"Emitir una opinión limpia basándose en su juicio profesional.",
+      B:"Incrementar únicamente los procedimientos analíticos.",
+      C:"Expresar una opinión con salvedades o denegar la opinión sobre los estados financieros.",
+      D:"Confiar en la evidencia proporcionada por la administración."
+    },
+    correct:"C"
+  }
+];
+
+const G5 = [
+  { id:"g5q1", tag:"Grupo 5 • NIA 320",
+    text:`1.	De acuerdo con el Párrafo 10 de la NIA 320 y su guía de aplicación, ordene la secuencia correcta de los siguientes pasos para determinar la importancia relativa para los estados financieros en su conjunto:
+1.	Determinar el porcentaje a aplicar a la referencia elegida.
+2.	Identificar una referencia adecuada como punto de partida.
+3.	Determinar la cifra final de importancia relativa para los estados financieros en su conjunto.
+4.	Considerar si la referencia seleccionada requiere ser normalizada (ajustada por partidas inusuales).
+5.	Comprender las necesidades de información financiera de los usuarios de los estados financieros.
+Opciones:`,
+    options:{
+      A:"2,1,4,5,3",
+      B:"5,2,4,1,3",
+      C:"5,1,2,4,3",
+      D:"2,4,1,3,5"
+    },
+    correct:"B"
+  },
+  { id:"g5q2", tag:"Grupo 5 • NIA 320",
+    text:`2.	Según la NIA 320, ¿cuál es el orden correcto para documentar la importancia relativa?
+1.	Revisiones realizadas durante el avance de la auditoría.
+2.	Importancia relativa para los estados financieros en su conjunto.
+3.	Importancia relativa para la ejecución del trabajo.
+4.	Niveles específicos para transacciones, saldos o revelaciones.
+Opciones:`,
+    options:{
+      A:"2, 4, 3, 1",
+      B:"2, 3, 4, 1",
+      C:"3, 2, 4, 1",
+      D:"4, 2, 1, 3"
+    },
+    correct:"A"
+  },
+  { id:"g5q3", tag:"Grupo 5 • NIA 320",
+    text:`3.	De acuerdo con la NIA 320, la importancia relativa para la ejecución del trabajo se establece con el propósito de:
+1.	Reducir a un nivel adecuadamente bajo la probabilidad de que la suma de las incorrecciones no corregidas y no detectadas supere la importancia relativa de los estados financieros.
+2.	Determinar de manera automática el alcance de todos los procedimientos de auditoría.
+3.	Establecer un nivel inferior al de la importancia relativa definida para los estados financieros en su conjunto.
+4.	Eliminar completamente el riesgo de auditoría.
+5.	Aplicar el juicio profesional del auditor al planificar y ejecutar la auditoría.
+6.	Evitar la necesidad de revisar la importancia relativa durante la auditoría.
+Opciones:`,
+    options:{
+      A:"2, 3, 4",
+      B:"1, 3, 5",
+      C:"1, 4, 6",
+      D:"3, 5, 1"
+    },
+    correct:"B"
+  },
+  { id:"g5q4", tag:"Grupo 5 • NIA 320",
+    text:`4.	Según la NIA 320, al determinar la importancia relativa en una auditoría de estados financieros, el auditor considera que:
+1.	Las incorrecciones pueden ser materiales tanto por su magnitud como por su naturaleza.
+2.	Los juicios sobre la importancia relativa se basan en las necesidades comunes de información financiera de los usuarios en su conjunto.
+3.	La importancia relativa se define únicamente al finalizar la auditoría.
+4.	El posible efecto de las incorrecciones en usuarios individuales específicos es un factor determinante.
+5.	La importancia relativa se aplica en la planificación y ejecución de la auditoría.
+6.	La importancia relativa elimina la posibilidad de incorrecciones materiales.
+Opciones:`,
+    options:{
+      A:"1, 3, 4",
+      B:"1, 2, 5",
+      C:"2, 4, 6",
+      D:"3, 6, 1"
+    },
+    correct:"B"
+  },
+  { id:"g5q5", tag:"Grupo 5 • NIA 320",
+    text:`5.	¿Cuál es el objetivo principal del auditor según la NIA 320 en relación con la importancia relativa durante la auditoría?
+Opciones:`,
+    options:{
+      A:"Detectar todas las declaraciones erróneas existentes en los estados financieros.",
+      B:"Aplicar el concepto de importancia relativa de manera apropiada al planear y realizar la auditoría.",
+      C:"Eliminar completamente el riesgo de auditoría mediante pruebas exhaustivas.",
+      D:"Determinar únicamente la importancia relativa al finalizar la auditoría."
+    },
+    correct:"B"
+  },
+  { id:"g5q6", tag:"Grupo 5 • NIA 320",
+    text:`6.	¿Qué se entiende por importancia relativa del desempeño según la NIA 320?
+Opciones:`,
+    options:{
+      A:"El monto máximo de error permitido antes de emitir una opinión adversa.",
+      B:"Un porcentaje fijo aplicado sobre los ingresos totales de la entidad.",
+      C:"La cantidad fijada por el auditor para reducir a un nivel bajo la probabilidad de que errores no detectados excedan la importancia relativa.",
+      D:"El nivel de error aceptable definido por la administración de la entidad."
+    },
+    correct:"C"
+  },
+  { id:"g5q7", tag:"Grupo 5 • NIA 320",
+    text:`7.	Completa el siguiente párrafo según el párrafo 11 de la NIA 320:
+El auditor determinará la importancia relativa para la ejecución del trabajo con el fin de valorar los riesgos de incorrección material y de determinar la __________, el __________ y la __________ de los procedimientos posteriores de auditoría.
+Opciones:`,
+    options:{
+      A:"planeación – control – evidencia",
+      B:"naturaleza – alcance – supervisión",
+      C:"naturaleza – momento – extensión",
+      D:"evaluación – tiempo – revisión"
+    },
+    correct:"C"
+  },
+  { id:"g5q8", tag:"Grupo 5 • NIA 320",
+    text:`8.	Completa el siguiente párrafo según el párrafo 12 de la NIA 320:
+El auditor revisará la __________ relativa para los estados financieros en su conjunto en el caso de que disponga, durante la __________ de la auditoría, de __________ que de haberla tenido inicialmente le hubiera llevado a determinar una cifra diferente.
+Opciones:`,
+    options:{
+      A:"materialidad – planificación – evidencia",
+      B:"importancia – realización – información",
+      C:"relevancia – ejecución – estimación",
+      D:"evaluación – revisión – documentación"
+    },
+    correct:"B"
+  },
+  { id:"g5q9", tag:"Grupo 5 • NIA 320",
+    text:`9.	Relacione los siguientes conceptos de la NIA 320:
+NIA 320	DESCRIPCIÓN
+1.	Importancia Relativa	a.	Riesgo de que el auditor exprese una opinión de auditoría inadecuada.
+2.	Riesgo de Auditoria	b.	Aplicar el concepto de importancia relativa de manera adecuada.
+3.	Incorrección Material	c.	Cifra o cifras determinadas por el auditor.
+4.	Objetivo del auditor	d.	Influye en las decisiones económicas que los usuarios toman basándose en los EEFF.
+Opciones:`,
+    options:{
+      A:"1a, 2b, 3c, 4d",
+      B:"1b, 2c, 3a, 4d",
+      C:"1c, 2a, 3d, 4b",
+      D:"1d, 2a, 3c, 4b"
+    },
+    correct:"C"
+  },
+  { id:"g5q10", tag:"Grupo 5 • NIA 320",
+    text:`10.	Relacione los conceptos de la NIA 320 con su respectiva descripción:
+Concepto	Función
+1.	NIA 320	a. Permite localizar el examen en los rubros de mayor relevancia.
+2.	Materialidad	b. Establece las directrices para determinar la importancia relativa.
+3.	Criterio de enfoque	c. Garantiza que los resultados del encargo sean efectivos y eficientes.
+4.	Objetivo del auditor	d. Se utiliza como medida de juicio durante toda la ejecución del trabajo.
+Opciones:`,
+    options:{
+      A:"1b, 2c, 3d, 4a",
+      B:"1b, 2d, 3a, 4c",
+      C:"1c, 2a, 3d, 4b",
+      D:"1a, 2d, 3c, 4b"
+    },
+    correct:"B"
+  }
+];
+
+const G6 = [
+  { id:"g6q1", tag:"Grupo 6 • NIA 315",
+    text:`Grupo #6 – NIA 315
+1.	Según la NIA 315, ordene los pasos del proceso de valoración del riesgo:
+1.	Aplicar procedimientos de valoración del riesgo (indagaciones, analíticos, observación)
+2.	Obtener conocimiento de la entidad, su entorno y su control interno
+3.	Identificar y valorar los riesgos de incorrección material en EEFF y afirmaciones
+4.	Revisar la valoración del riesgo si se obtiene nueva evidencia
+Opciones:`,
+    options:{
+      A:"2, 1, 3, 4",
+      B:"1, 2, 3, 4",
+      C:"3, 2, 1, 4",
+      D:"2, 3, 1, 4"
+    },
+    correct:"A"
+  },
+  { id:"g6q2", tag:"Grupo 6 • NIA 315",
+    text:`2.	Según la NIA 315, ordene cronológicamente los pasos para conocer la entidad y su entorno:
+1.	Conocer la naturaleza de la entidad (operaciones, estructura, inversiones)
+2.	Conocer factores sectoriales, normativos y otros factores externos
+3.	Conocer los objetivos, estrategias y riesgos de negocio relacionados
+4.	Conocer la selección y aplicación de políticas contables
+5.	Conocer la medición y revisión del resultado financiero
+Opciones:`,
+    options:{
+      A:"2, 1, 4, 3, 5",
+      B:"1, 2, 3, 4, 5",
+      C:"2, 3, 1, 5, 4",
+      D:"1, 4, 2, 3, 5"
+    },
+    correct:"A"
+  },
+  { id:"g6q3", tag:"Grupo 6 • NIA 315",
+    text:`3.	Según la NIA 315, ordene los pasos para identificar y valorar riesgos significativos:
+1.	Excluir los efectos de los controles relacionados con el riesgo
+2.	Considerar criterios como fraude, complejidad o subjetividad en mediciones
+3.	Determinar si algún riesgo identificado es significativo
+4.	Obtener conocimiento de los controles correspondientes al riesgo significativo
+Opciones:`,
+    options:{
+      A:"3, 1, 2, 4",
+      B:"2, 3, 1, 4",
+      C:"1, 2, 3, 4",
+      D:"3, 2, 1, 4"
+    },
+    correct:"A"
+  },
+  { id:"g6q4", tag:"Grupo 6 • NIA 315",
+    text:`4.	De acuerdo con la NIA 315: "El __________ es un riesgo identificado y valorado de incorrección material que, a juicio del auditor, requiere una __________ especial en la __________".
+Opciones:`,
+    options:{
+      A:"riesgo alto – atención – empresa",
+      B:"riesgo significativo – consideración – auditoría",
+      C:"riesgo de fraude – valoración – contabilidad",
+      D:"riesgo operativo – revisión – organización"
+    },
+    correct:"B"
+  },
+  { id:"g6q5", tag:"Grupo 6 • NIA 315",
+    text:`5.	Según la NIA 315: "Cuando el auditor tenga la intención de utilizar información obtenida de __________ anteriores, determinará si se han producido __________ que puedan afectar a su __________ para la auditoría __________".
+Opciones:`,
+    options:{
+      A:"periodos – cambios – relevancia – actual",
+      B:"auditorías – modificaciones – utilidad – siguiente",
+      C:"informes – ajustes – aplicabilidad – futura",
+      D:"registros – variaciones – validez – periódica"
+    },
+    correct:"A"
+  },
+  { id:"g6q6", tag:"Grupo 6 • NIA 315",
+    text:`6.	Según la NIA 315: "La documentación de auditoría incluirá los resultados de la __________ entre el equipo, los elementos clave del conocimiento obtenido, los riesgos identificados y valorados, y los riesgos significativos con sus __________ relacionados".
+Opciones:`,
+    options:{
+      A:"discusión – controles",
+      B:"reunión – procedimientos",
+      C:"evaluación – transacciones",
+      D:"coordinación – registros"
+    },
+    correct:"A"
+  },
+  { id:"g6q7", tag:"Grupo 6 • NIA 315",
+    text:`7.	Relacione los componentes del control interno (NIA 315 Revisada) con sus descripciones y seleccione la combinación correcta:
+CONCEPTO	DEFINICIÓN
+1. Entorno de control	a. Procesos para identificar, estimar y responder a riesgos de negocio
+2. Proceso de valoración del riesgo	b. Actitudes, valores y competencias que sustentan el control interno
+3. Actividades de control	c. Procedimientos diseñados para prevenir o detectar incorrecciones materiales
+4. Seguimiento de controles	d. Supervisión del funcionamiento efectivo de los controles
+Opciones:`,
+    options:{
+      A:"1a, 2b, 3c, 4d",
+      B:"1b, 2a, 3c, 4d",
+      C:"1b, 2c, 3a, 4d",
+      D:"1d, 2a, 3b, 4c"
+    },
+    correct:"B"
+  },
+  { id:"g6q8", tag:"Grupo 6 • NIA 315",
+    text:`8.	Relacione los aspectos a conocer de la entidad con su contenido según la NIA 315 y seleccione la combinación correcta:
+Aspecto para conocer	Contenido
+1. Factores sectoriales y normativos	a.	A Operaciones, estructura de gobierno, inversiones, financiación
+2. Naturaleza de la entidad	b.	a. Principios contables, cambios, adecuación al sector
+3. Políticas contables	c.	b. Mercado competitivo, marco normativo, legislación aplicable
+4. Objetivos y estrategias	d.	c. Planes generales, enfoques para alcanzarlos, riesgos de negocio
+5. Medición del resultado	e.	d. Indicadores clave, presupuestos, comparaciones con la competencia
+Opciones:`,
+    options:{
+      A:"1c, 2a, 3b, 4d, 5e",
+      B:"1a, 2c, 3b, 4e, 5d",
+      C:"1c, 2b, 3a, 4d, 5e",
+      D:"1d, 2a, 3c, 4b, 5e"
+    },
+    correct:"A"
+  },
+  { id:"g6q9", tag:"Grupo 6 • NIA 315",
+    text:`9.	Según la NIA 315, ¿cuál de los siguientes NO forma parte de los procedimientos de valoración del riesgo?
+Opciones:`,
+    options:{
+      A:"Indagaciones ante la dirección y la función de auditoría interna",
+      B:"Aplicación de procedimientos sustantivos de detección",
+      C:"Procedimientos analíticos",
+      D:"Observación e inspección de operaciones y documentos"
+    },
+    correct:"B"
+  },
+  { id:"g6q10", tag:"Grupo 6 • NIA 315",
+    text:`10.	Según la NIA 315 , ¿cuál de los siguientes criterios NO se considera para determinar si un riesgo es significativo?
+Opciones:`,
+    options:{
+      A:"Si se trata de un riesgo de fraude",
+      B:"La complejidad de las transacciones",
+      C:"El tamaño de la entidad auditada",
+      D:"Si afecta a transacciones con partes vinculadas"
+    },
+    correct:"C"
+  }
+];
+
+const G7 = [
+  { id:"g7q1", tag:"Grupo 7 • NIA 315",
+    text:`GRUPO#7 - NIA 315
+
+1.	De acuerdo con la NIA 315 la obtención de conocimiento de los controles relevantes para la auditoria, ¿Qué debe evaluar y determinar el auditor?
+Opciones:`,
+    options:{
+      A:"Solo la implementación de los controles internos.",
+      B:"La efectividad operativa de los controles y su documentación.",
+      C:"El diseño de dichos controles relevantes y si se han implementado, mediante la aplicación de procedimientos adicionales a la indagación.",
+      D:"Quienes dentro de la estructura de la entidad son los responsables del gobierno."
+    },
+    correct:"C"
+  },
+  { id:"g7q2", tag:"Grupo 7 • NIA 315",
+    text:`2.	Según la identificación y valoración de los riesgos de incorrección material, ¿qué aspectos debe analizar el auditor para determinar si una incorrección potencial puede considerarse material?
+Opciones:`,
+    options:{
+      A:"La relación de los riesgos con los estados financieros en su conjunto y su impacto en las afirmaciones, sin considerar la probabilidad de que existan incorrecciones.",
+      B:"La probabilidad de que existan incorrecciones, incluida la posibilidad de múltiples incorrecciones, y si la incorrección potencial podría, por su magnitud, constituir una incorrección material.",
+      C:"El conocimiento de la entidad y de su entorno, considerando los tipos de transacciones, saldos contables e información a revelar, sin evaluar la magnitud de la incorrección potencial.",
+      D:"La identificación de los riesgos mediante los controles relevantes y su relación con posibles incorrecciones en las afirmaciones, sin analizar si dichas incorrecciones podrían ser materiales."
+    },
+    correct:"B"
+  },
+  { id:"g7q3", tag:"Grupo 7 • NIA 315",
+    text:`3.	De acuerdo con la NIA 315, como parte de los requerimientos el auditor debe obtener conocimiento de si la entidad tiene un proceso de valoración de riesgo adecuado. A continuación, relacione cada componente de dicho proceso con su descripción correspondiente.
+
+1. Identificación de riesgos.
+2. Estimación de la significatividad.
+3. Valoración de la probabilidad de ocurrencia.
+4. Toma de decisiones. 
+
+a. Determinar la importancia cuantitativa o cualitativa de los riesgos identificados.
+b. Con respecto a las actuaciones que la entidad debe llevar a cabo para responder a dichos riesgos. 
+c. Reconocer los riesgos de negocio relevantes para los objetivos de la información financiera.
+d. Evaluar la posibilidad de que el riesgo se materialice. 
+
+Opciones:`,
+    options:{
+      A:"1c, 2a, 3d, 4b",
+      B:"1a, 2b, 3c, 4d",
+      C:"1b, 2a, 3c, 4d",
+      D:"1a, 2c, 3b, 1d"
+    },
+    correct:"A"
+  },
+  { id:"g7q4", tag:"Grupo 7 • NIA 315",
+    text:`4.	Relacione los conceptos de la columna A con las descripciones correctas de la columna B, respecto a la revisión de la valoración del riesgo y a la documentación de auditoría, según la NIA 315.
+1.- Revisión de la valoración del riesgo
+2.- Documentación – resultados de discusión del equipo
+3.- Documentación – conocimiento de la entidad y su entorno
+4.- Documentación – riesgos de incorrección material
+
+a. Incluye los riesgos identificados y valorados en los estados financieros y afirmaciones.
+ b. Se modifica cuando la evidencia obtenida es incongruente con la valoración inicial del auditor.
+ c. Comprende los resultados de las discusiones del equipo del encargo y las decisiones significativas tomadas.
+ d. Contiene los elementos clave del conocimiento sobre la entidad, su entorno y el control interno.
+
+Opciones:`,
+    options:{
+      A:"1b, 2c, 3d, 4a",
+      B:"1a, 2b, 3c, 4d",
+      C:"1c, 2d, 3b, 4a",
+      D:"1b, 2d, 3a, 4c"
+    },
+    correct:"A"
+  },
+  { id:"g7q5", tag:"Grupo 7 • NIA 315",
+    text:`5.	De acuerdo con la NIA 315, ordene correctamente las acciones que debe realizar el auditor para identificar y valorar los riesgos de incorrección material.
+1.	Valorar la probabilidad y magnitud de las incorrecciones identificadas.
+2.	Obtener conocimiento de la entidad, su entorno y el control interno relevante.
+3.	Identificar los riesgos de incorrección material a nivel de estados financieros y de afirmaciones.
+4.	Relacionar los riesgos identificados con posibles incorrecciones en los estados financieros.
+Opciones:`,
+    options:{
+      A:"2, 3, 4, 1",
+      B:"3, 2, 1, 4",
+      C:"2, 4, 3, 1",
+      D:"4, 3, 2, 1"
+    },
+    correct:"A"
+  },
+  { id:"g7q6", tag:"Grupo 7 • NIA 315",
+    text:`6.	De acuerdo con la NIA 315, ordene correctamente los pasos para usar información de auditorías anteriores en la auditoría actual.
+1.	Discusión del equipo sobre exposición a incorrecciones.
+2.	Verificar cambios desde la auditoría anterior.
+3.	Evaluar utilidad de la información previa para identificar riesgos.
+4.	Definir qué comunicar a quienes no participaron.
+Opciones:`,
+    options:{
+      A:"3, 2, 1, 4",
+      B:"2, 3, 1, 4",
+      C:"1, 2, 3, 4",
+      D:"3, 1 2, 4"
+    },
+    correct:"A"
+  },
+  { id:"g7q7", tag:"Grupo 7 • NIA 315",
+    text:`7.	Complete el siguiente enunciado de forma correcta, sobre el proceso de valoración del riesgo por la entidad según lo establece la NIA 315:
+Cuando el auditor identifique riesgos de _______________ materiales no identificados por la ____________, evaluará si existía un riesgo ___________ de tal naturaleza que, a ____________ del auditor, debería haber sido identificado por el proceso de valoración del riesgo por la entidad.
+Opciones:`,
+    options:{
+      A:"Relacionados – auditoria – subyacente – responsable.",
+      B:"Observaciones – administración – relevante – supervisión.",
+      C:"Deficiencias – control – estructural – alto valor .",
+      D:"Incorrección – dirección – subyacente – juicio."
+    },
+    correct:"D"
+  },
+  { id:"g7q8", tag:"Grupo 7 • NIA 315",
+    text:`8.	Complete el siguiente enunciado de forma correcta, sobre la relación entre el riesgo de negocio y el riesgo de incorrección material según la NIA 315:
+El __________ de negocio puede tener una consecuencia inmediata sobre el riesgo de __________ material para tipos de transacciones, saldos contables e información a revelar en los __________ financieros, especialmente cuando se relaciona con la valoración de las cuentas a __________.
+Opciones:`,
+    options:{
+      A:"control – auditoría – informes – pagar",
+      B:"riesgo – incorrección – estados – cobrar",
+      C:"error – fraude – libros – registrar",
+      D:"proceso – control – reportes – evaluar"
+    },
+    correct:"B"
+  },
+  { id:"g7q9", tag:"Grupo 7 • NIA 315",
+    text:`9.	De acuerdo con la NIA 315, para identificar y valorar los riesgos de incorrección material, el auditor debe obtener comprensión de los siguientes aspectos de la entidad y su entorno:
+1.	Naturaleza del negocio y sus operaciones principales
+2.	Objetivos y estrategias definidos por la administración
+3.	Opinión que emitirá el auditor al final del examen
+4.	Marco legal y regulatorio aplicable a la entidad
+5.	Riesgos del negocio que puedan afectar los estados financieros
+6.	Políticas de fijación de honorarios del auditor
+Opciones:`,
+    options:{
+      A:"1, 2, 3 y 4",
+      B:"1, 2, 4 y 5",
+      C:"2, 3, 5 y 6",
+      D:"1, 3, 4 y 6"
+    },
+    correct:"B"
+  },
+  { id:"g7q10", tag:"Grupo 7 • NIA 315",
+    text:`10.	Según la NIA 315, al evaluar el sistema de control interno, el auditor debe considerar los siguientes componentes para determinar el riesgo de control:
+1.	Ambiente de control
+2.	Evaluación del riesgo por la entidad
+3.	Actividades de control
+4.	Planeación fiscal de la entidad
+5.	Información y comunicación
+6.	Supervisión (monitoreo) de los controles
+Opciones:`,
+    options:{
+      A:"1, 2, 3, 5",
+      B:"2, 4, 5, 6",
+      C:"1, 3, 4, 6",
+      D:"1, 2, 3, 5, 6"
+    },
+    correct:"D"
+  }
+];
+
+/* =========================
+   Motor UI
+   ========================= */
+const GROUPS = {
+  1:{name:"Grupo 1", items:G1},
+  2:{name:"Grupo 2", items:G2},
+  3:{name:"Grupo 3", items:G3},
+  4:{name:"Grupo 4", items:G4},
+  5:{name:"Grupo 5", items:G5},
+  6:{name:"Grupo 6", items:G6},
+  7:{name:"Grupo 7", items:G7},
+};
+
+let currentGroup = 1;
+
+function initTabs(){
+  const tabs = document.getElementById("tabs");
+  tabs.innerHTML = "";
+  Object.keys(GROUPS).forEach(k=>{
+    const n = Number(k);
+    const btn = document.createElement("button");
+    btn.className = "tab" + (n===currentGroup ? " active":"");
+    btn.id = "tab"+n;
+    btn.onclick = ()=>showGroup(n);
+    btn.innerHTML = `${GROUPS[n].name} <span class="counter">(${GROUPS[n].items.length})</span>`;
+    tabs.appendChild(btn);
+  });
+}
+
+function showGroup(n){
+  currentGroup = n;
+  Object.keys(GROUPS).forEach(k=>{
+    const id = "tab"+k;
+    const el = document.getElementById(id);
+    if(el) el.classList.toggle("active", Number(k)===n);
+  });
+  render();
+  hideResult();
+  window.scrollTo({top:0, behavior:"smooth"});
+}
+
+function nl2br(s){
+  return s.replace(/\n/g,"<br>");
+}
+
+function render(){
+  const quiz = document.getElementById("quiz");
+  quiz.innerHTML = "";
+  const list = GROUPS[currentGroup].items;
+
+  list.forEach((q) => {
+    const div = document.createElement("div");
+    div.className = "q";
+    div.innerHTML = `
+      <div class="q-head">
+        <p class="q-title">${nl2br(q.text)}</p>
+        <span class="q-tag">${q.tag}</span>
+      </div>
+      <div class="opts">
+        ${Object.entries(q.options).map(([k,v]) => `
+          <label>
+            <input type="radio" name="${q.id}" value="${k}" onchange="checkAnswer('${q.id}', '${k}', '${q.correct}')">
+            <b>${k})</b> ${v}
+          </label>
+        `).join("")}
+      </div>
+
+<div id="result_${q.id}" style="font-weight:bold; margin-top:5px;"></div>
+
+    `;
+    quiz.appendChild(div);
+  });
+}
+
+function hideResult(){
+  const out = document.getElementById("out");
+  out.style.display = "none";
+  out.innerHTML = "";
+}
+
+function compute(list){
+  let correct = 0, answered = 0;
+  const misses = [];
+
+  list.forEach(q => {
+    const picked = document.querySelector(`input[name="${q.id}"]:checked`);
+    if(picked){
+      answered++;
+      if(picked.value === q.correct) correct++;
+      else misses.push({q, your:picked.value});
+    } else {
+      misses.push({q, your:"(sin responder)"});
+    }
+  });
+
+  return { correct, answered, total:list.length, misses };
+}
+
+function badgeFor(pct){
+  if(pct >= 70) return { cls:"ok", text:"APROBADO ✅" };
+  if(pct >= 50) return { cls:"mid", text:"CASI ✅" };
+  return { cls:"bad", text:"REPROBADO ❌" };
+}
+
+function renderResult(title, data, extraLine){
+  const pct = Math.round((data.correct / data.total) * 100);
+  const b = badgeFor(pct);
+  const out = document.getElementById("out");
+  out.style.display = "block";
+  out.innerHTML = `
+    <div class="score">
+      <div>
+        <p class="big">${title}: ${data.correct} / ${data.total} (${pct}%)</p>
+        <p class="meta">${extraLine ? extraLine + "<br>" : ""}Respondidas: ${data.answered} • Sin responder: ${data.total - data.answered}</p>
+      </div>
+      <div class="badge ${b.cls}">${b.text}</div>
+    </div>
+
+    <div class="review">
+      <h3>Revisión (errores / faltantes)</h3>
+      ${
+        data.misses.length === 0
+          ? "<p class='meta'>¡Todo correcto! 🌳</p>"
+          : data.misses.map(m => `
+            <div class="miss">
+              <div><strong>Tu respuesta:</strong> ${m.your}</div>
+              <div><b>Correcta:</b> ${m.q.correct}) ${m.q.options[m.q.correct]}</div>
+              <small>${m.q.text}</small>
+            </div>
+          `).join("")
+      }
+    </div>
+  `;
+  out.scrollIntoView({behavior:"smooth", block:"start"});
+}
+
+function gradeCurrent(){
+  const data = compute(GROUPS[currentGroup].items);
+  renderResult(`Resultado ${GROUPS[currentGroup].name}`, data, null);
+}
+
+function gradeGlobal(){
+  const all = Object.values(GROUPS).flatMap(g=>g.items);
+  const data = compute(all);
+
+  const summary = Object.keys(GROUPS).map(k=>{
+    const r = compute(GROUPS[k].items);
+    const pct = Math.round((r.correct / r.total) * 100);
+    return `${GROUPS[k].name} ${r.correct}/${r.total} (${pct}%)`;
+  }).join(" • ");
+
+  renderResult("Resultado TOTAL (Grupos 1–7)", data, `<b>Resumen por grupo:</b> ${summary}`);
+}
+
+function resetAll(){
+  const all = Object.values(GROUPS).flatMap(g=>g.items);
+  all.forEach(q => {
+    document.querySelectorAll(`input[name="${q.id}"]`).forEach(r => r.checked = false);
+  });
+  hideResult();
+  window.scrollTo({top:0, behavior:"smooth"});
+}
+
+/* Init */
+initTabs();
+render();
+function checkAnswer(questionId, selected, correct){
+
+  const resultDiv = document.getElementById("result_" + questionId);
+
+  if(selected === correct){
+
+    resultDiv.innerHTML = "✅ Correcta";
+    resultDiv.style.color = "green";
+
+  }else{
+
+    resultDiv.innerHTML = "❌ Incorrecta. Correcta: " + correct;
+    resultDiv.style.color = "red";
+
+  }
+
+}
+</script>
+</body>
+</html>
